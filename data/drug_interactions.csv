@@ -1,0 +1,52 @@
+drug1,drug2,interaction
+Ibuprofen,Warfarin,Increased risk of bleeding
+Aspirin,Ibuprofen,May reduce aspirin effectiveness
+Paracetamol,Alcohol,May cause liver damage
+Metformin,Alcohol,May increase risk of lactic acidosis
+Warfarin,Aspirin,High bleeding risk when used together
+Warfarin,Clopidogrel,Increased bleeding risk
+Simvastatin,Clarithromycin,May increase risk of muscle damage
+Atorvastatin,Clarithromycin,Increased risk of statin toxicity
+Lisinopril,Potassium supplements,May increase potassium to dangerous levels
+Digoxin,Furosemide,May increase digoxin toxicity
+Amoxicillin,Methotrexate,May increase methotrexate toxicity
+Ciprofloxacin,Tizanidine,Severe sedation and low blood pressure risk
+Tramadol,Sertraline,Risk of serotonin syndrome
+Fluoxetine,Tramadol,Risk of serotonin syndrome
+Prednisone,Ibuprofen,Increased risk of stomach ulcers
+Ibuprofen,Alcohol,Increased risk of stomach bleeding
+Aspirin,Alcohol,Increased risk of stomach bleeding
+Metformin,Cimetidine,May increase metformin levels
+Warfarin,Fluconazole,Increased bleeding risk
+Warfarin,Amiodarone,Increased anticoagulant effect
+Clopidogrel,Omeprazole,May reduce clopidogrel effectiveness
+Levothyroxine,Calcium carbonate,Reduced thyroid hormone absorption
+Levothyroxine,Iron supplements,Reduced thyroid hormone absorption
+Tetracycline,Milk,Reduced antibiotic absorption
+Ciprofloxacin,Milk,Reduced antibiotic absorption
+Azithromycin,Antacids,Reduced antibiotic absorption
+Metronidazole,Alcohol,Severe nausea and vomiting reaction
+Isotretinoin,Tetracycline,Risk of increased intracranial pressure
+Lithium,Ibuprofen,Increased lithium toxicity
+Lithium,Diuretics,May increase lithium levels
+Digoxin,Amiodarone,Increased digoxin toxicity
+Propranolol,Verapamil,Risk of low heart rate
+Propranolol,Diltiazem,Risk of heart conduction problems
+Sildenafil,Nitroglycerin,Dangerous drop in blood pressure
+Nitroglycerin,Tadalafil,Dangerous drop in blood pressure
+Codeine,Alcohol,Increased sedation and breathing suppression
+Diazepam,Alcohol,Severe sedation risk
+Alprazolam,Alcohol,Severe sedation risk
+Sertraline,Linezolid,Risk of serotonin syndrome
+Fluoxetine,Linezolid,Risk of serotonin syndrome
+Aspirin,Clopidogrel,High bleeding risk
+Warfarin,NSAIDs,Increased bleeding risk
+Prednisone,Warfarin,May affect blood clotting
+Captopril,Potassium supplements,Risk of hyperkalemia
+Ramipril,Potassium supplements,Risk of high potassium levels
+Hydrochlorothiazide,Lithium,Increased lithium levels
+Furosemide,Gentamicin,Increased risk of kidney damage
+Gentamicin,Vancomycin,Increased kidney toxicity
+Insulin,Alcohol,Increased risk of hypoglycemia
+Glimepiride,Alcohol,Increased hypoglycemia risk
+Metformin,Contrast dye,Risk of lactic acidosis
