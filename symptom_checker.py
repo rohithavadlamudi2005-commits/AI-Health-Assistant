@@ -2,11 +2,11 @@ import streamlit as st
 from groq import Groq
 from utils import translate_text, speak
 
-# GROQ CLIENT
+# ---------- GROQ CLIENT ----------
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
 
-# AI FUNCTION
+# ---------- AI FUNCTION ----------
 def analyze_symptoms(symptoms):
 
     prompt = f"""
@@ -44,14 +44,18 @@ Advice:
     return response.choices[0].message.content
 
 
-# STREAMLIT MODULE
+# ---------- STREAMLIT MODULE ----------
 def run(agent_input=None):
 
     st.header("🤒 Symptom Checker")
 
     st.write("Enter symptoms to see possible health conditions.")
 
-    # If agent passes symptoms, use them
+    # initialize session storage
+    if "symptom_result" not in st.session_state:
+        st.session_state.symptom_result = None
+
+    # if agent sends input
     if agent_input:
         symptoms = agent_input
         st.info(f"Detected symptoms: {symptoms}")
@@ -61,6 +65,7 @@ def run(agent_input=None):
             placeholder="fever, cough, headache"
         )
 
+    # analyze button
     if st.button("Analyze Symptoms") or agent_input:
 
         if symptoms.strip() == "":
@@ -71,11 +76,20 @@ def run(agent_input=None):
 
             result = analyze_symptoms(symptoms)
 
+        # store result so it doesn't disappear
+        st.session_state.symptom_result = result
+
+    # show stored result
+    if st.session_state.symptom_result:
+
         st.subheader("🧠 AI Health Insight")
 
         language = st.session_state.get("language", "English")
 
-        translated = translate_text(result, language)
+        translated = translate_text(
+            st.session_state.symptom_result,
+            language
+        )
 
         st.write(translated)
 
