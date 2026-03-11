@@ -1,52 +1,55 @@
-# AI Health Assistant
+🩺 AI Health Assistant
 
-AI Health Assistant is an AI-powered healthcare support system that helps users understand medical information and make informed health decisions. The application uses **Large Language Models (LLMs)** and **Retrieval Augmented Generation (RAG)** to provide accurate health-related responses.
+AI Health Assistant is an Agentic AI-based healthcare support system that helps users understand medical information and make informed health decisions.
+It uses Large Language Models (LLMs) to route user queries to specialized healthcare tools such as symptom analysis, drug interaction checking, and medical report interpretation.
 
-## Live Demo
+🚀 Live Demo
 
 https://ai-health-assistant-qqtjm59drjvg6esbnxsk9y.streamlit.app/
 
-## Features
+✨ Features
 
-* Symptom Checker – Analyze symptoms and suggest possible conditions
-* Drug Interaction Checker – Identify potential interactions between medicines
-* Medical Report Analyzer – Upload reports and get simplified explanations
-* Medicine Alternative Finder – Suggest alternative medicines
-* AI Health Chatbot – Ask health-related questions
+🤒 Symptom Checker – Analyze symptoms and suggest possible health conditions
 
-## Tech Stack
+💊 Drug Interaction Checker – Identify potential interactions between medicines
 
-* Python
-* Streamlit
-* LLMs
-* RAG
-* Groq API
-* Pandas
+📄 Medical Report Analyzer – Upload reports and get simplified explanations
 
-## Installation
+📊 Disease Risk Predictor – Estimate risk for diseases like diabetes or heart disease
 
-Clone the repository:
-git clone https://github.com/rohithavadlamudi2005-commits/AI-Health-Assistant.git
+🔎 Medicine Alternative Finder – Suggest alternative medicines
 
-Move to project folder:
-cd AI-Health-Assistant
+🧠 AI Health Chat Assistant – Ask general health-related questions
 
-Install dependencies:
-pip install -r requirements.txt
+🌐 Multilingual Support – Translate responses to multiple languages
 
-## Setup API Key
+🔊 Voice Output – Convert health insights into speech
 
-Create file:
-.streamlit/secrets.toml
+🤖 Architecture
 
-Add:
-GROQ_API_KEY="your_api_key"
+User Query → AI Router Agent → Select Tool → Generate Health Insight
 
-## Run the App
+The routing agent decides which healthcare tool should handle the request, enabling a tool-using AI assistant rather than a simple chatbot.
 
-streamlit run app.py
+🛠 Tech Stack
 
-## Author
+Python
+
+Streamlit
+
+Groq API (Llama 3.1)
+
+Pandas
+
+EasyOCR
+
+PyPDF
+
+gTTS
+
+⚠ Disclaimer
+
+This application provides general health information for educational purposes only and is not a substitute for professional medical advice.
 
 Rohitha Vadlamudi
 GitHub: https://github.com/rohithavadlamudi2005-commits
