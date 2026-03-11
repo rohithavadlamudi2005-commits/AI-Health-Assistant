@@ -66,7 +66,7 @@ if page == "🤖 Agentic Health Assistant":
 
         if decision == "symptom":
             st.success("Agent selected: Symptom Checker")
-            symptom_checker.run()
+            symptom_checker.run(user_query)
 
         elif decision == "drug":
             st.success("Agent selected: Drug Interaction Checker")
