@@ -51,22 +51,19 @@ def run(agent_input=None):
 
     st.write("Enter symptoms to see possible health conditions.")
 
-    # initialize session storage
+    # store result
     if "symptom_result" not in st.session_state:
         st.session_state.symptom_result = None
 
-    # if agent sends input
-    if agent_input:
-        symptoms = agent_input
-        st.info(f"Detected symptoms: {symptoms}")
-    else:
-        symptoms = st.text_area(
-            "Enter symptoms (comma separated)",
-            placeholder="fever, cough, headache"
-        )
+    # symptoms input
+    symptoms = st.text_area(
+        "Enter symptoms (comma separated)",
+        value=agent_input if agent_input else "",
+        placeholder="fever, cough, headache"
+    )
 
     # analyze button
-    if st.button("Analyze Symptoms") or agent_input:
+    if st.button("Analyze Symptoms"):
 
         if symptoms.strip() == "":
             st.warning("Please enter symptoms.")
@@ -76,10 +73,9 @@ def run(agent_input=None):
 
             result = analyze_symptoms(symptoms)
 
-        # store result so it doesn't disappear
         st.session_state.symptom_result = result
 
-    # show stored result
+    # display result
     if st.session_state.symptom_result:
 
         st.subheader("🧠 AI Health Insight")
