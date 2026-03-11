@@ -70,19 +70,19 @@ if page == "🤖 Agentic Health Assistant":
 
         elif decision == "drug":
             st.success("Agent selected: Drug Interaction Checker")
-            drug_interaction.run()
+            drug_interaction.run(user_query)
 
         elif decision == "report":
             st.success("Agent selected: Medical Report Analyzer")
-            report_analyzer.run()
+            report_analyzer.run(user_query)
 
         elif decision == "disease":
             st.success("Agent selected: Disease Risk Predictor")
-            disease_predictor.run()
+            disease_predictor.run(user_query)
 
         elif decision == "medicine":
             st.success("Agent selected: Medicine Alternative Finder")
-            medicine_alternative.run()
+            medicine_alternative.run(user_query)
 
         else:
             st.success("Agent selected: AI Health Chat Assistant")
