@@ -47,10 +47,8 @@ def extract_parameters(text):
 
     patterns = [
 
-        # format with High/Low
         r'([A-Za-z ()]+)\s+(\d+\.?\d*)\s+(High|Low)\s+(\d+\.?\d*)\s*-\s*(\d+\.?\d*)',
 
-        # format without High/Low
         r'([A-Za-z ()]+)\s+(\d+\.?\d*)\s+(\d+\.?\d*)\s*-\s*(\d+\.?\d*)'
     ]
 
@@ -97,8 +95,6 @@ def extract_parameters(text):
 # ---------- AI EXPLANATION ----------
 def explain_results(results):
 
-    abnormal = [r for r in results if r["Status"] != "Normal"]
-
     summary = ""
 
     for r in results:
@@ -127,9 +123,11 @@ Results:
 
 
 # ---------- STREAMLIT MODULE ----------
-def run():
+def run(agent_input=None):
 
     st.header("📄 Medical Report Analyzer")
+
+    st.write("Upload a medical report to analyze health parameters.")
 
     uploaded_file = st.file_uploader(
         "Upload Medical Report",
@@ -149,7 +147,6 @@ def run():
                 df = pd.DataFrame(parameters)
 
                 st.subheader("🩺 Report Summary")
-
                 st.dataframe(df, use_container_width=True)
 
                 abnormal = df[df["Status"] != "Normal"]
@@ -157,13 +154,11 @@ def run():
                 if not abnormal.empty:
 
                     st.subheader("⚠ Abnormal Results")
-
                     st.dataframe(abnormal, use_container_width=True)
 
                 explanation = explain_results(parameters)
 
                 st.subheader("🧠 AI Health Explanation")
-
                 st.write(explanation)
 
             else:

@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-def run():
+def run(agent_input=None):
 
     st.header("📊 Disease Risk Predictor")
 
@@ -22,6 +22,7 @@ def run():
     exercise = st.selectbox("Do you exercise regularly?", ["Yes", "No"])
 
     family_history = st.selectbox("Family history of diabetes/heart disease?", ["No", "Yes"])
+
 
     if st.button("Predict Risk"):
 

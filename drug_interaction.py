@@ -3,11 +3,11 @@ import pandas as pd
 from groq import Groq
 
 
-# GROQ CLIENT
+# ---------- GROQ CLIENT ----------
 client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 
 
-# LLM FUNCTION
+# ---------- LLM FUNCTION ----------
 def ask_llm(med1, med2):
 
     prompt = f"""
@@ -37,15 +37,18 @@ Advice:
     return response.choices[0].message.content
 
 
-# STREAMLIT MODULE
-def run():
+# ---------- STREAMLIT MODULE ----------
+def run(agent_input=None):
 
     st.header("💊 Drug Interaction Checker")
+
+    if agent_input:
+        st.info(f"Detected medicine query: {agent_input}")
 
     med1 = st.text_input("Enter first medicine")
     med2 = st.text_input("Enter second medicine")
 
-    if st.button("Check Interaction"):
+    if st.button("Check Interaction") or agent_input:
 
         if med1.strip() == "" or med2.strip() == "":
             st.warning("Please enter both medicines")
@@ -65,7 +68,6 @@ def run():
             df["drug1"] = df["drug1"].astype(str).str.lower().str.strip()
             df["drug2"] = df["drug2"].astype(str).str.lower().str.strip()
 
-            # check both combinations
             result = df[
                 ((df["drug1"] == med1) & (df["drug2"] == med2)) |
                 ((df["drug1"] == med2) & (df["drug2"] == med1))
@@ -74,7 +76,6 @@ def run():
             if not result.empty:
 
                 st.error("⚠ Interaction Found (Dataset)")
-
                 st.write(result.iloc[0]["interaction"])
 
             else:
@@ -82,11 +83,9 @@ def run():
                 st.info("No interaction found in dataset. Checking with AI...")
 
                 with st.spinner("Analyzing..."):
-
                     answer = ask_llm(med1_input, med2_input)
 
                 st.subheader("🧠 AI Insight")
-
                 st.write(answer)
 
         except:

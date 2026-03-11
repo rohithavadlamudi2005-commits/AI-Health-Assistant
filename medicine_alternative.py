@@ -40,18 +40,23 @@ Remind user to consult a doctor before switching medicines.
 
 
 # Streamlit module
-def run():
+def run(agent_input=None):
 
     st.header("🔎 Medicine Alternative Finder")
 
     st.write("Find alternative medicines with the same active ingredient.")
 
-    medicine = st.text_input(
-        "Enter medicine name",
-        placeholder="e.g., Paracetamol"
-    )
+    # If called by agent
+    if agent_input:
+        medicine = agent_input
+        st.info(f"Detected medicine query: {medicine}")
+    else:
+        medicine = st.text_input(
+            "Enter medicine name",
+            placeholder="e.g., Paracetamol"
+        )
 
-    if st.button("Find Alternatives"):
+    if st.button("Find Alternatives") or agent_input:
 
         if medicine.strip() == "":
             st.warning("Please enter a medicine name.")
@@ -71,4 +76,6 @@ def run():
 
         speak(translated, language)
 
-        st.caption("⚠ This information is for educational purposes only and not medical advice.")
+        st.caption(
+            "⚠ This information is for educational purposes only and not medical advice."
+        )

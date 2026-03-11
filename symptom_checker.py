@@ -45,18 +45,23 @@ Advice:
 
 
 # STREAMLIT MODULE
-def run():
+def run(agent_input=None):
 
     st.header("🤒 Symptom Checker")
 
     st.write("Enter symptoms to see possible health conditions.")
 
-    symptoms = st.text_area(
-        "Enter symptoms (comma separated)",
-        placeholder="fever, cough, headache"
-    )
+    # If agent passes symptoms, use them
+    if agent_input:
+        symptoms = agent_input
+        st.info(f"Detected symptoms: {symptoms}")
+    else:
+        symptoms = st.text_area(
+            "Enter symptoms (comma separated)",
+            placeholder="fever, cough, headache"
+        )
 
-    if st.button("Analyze Symptoms"):
+    if st.button("Analyze Symptoms") or agent_input:
 
         if symptoms.strip() == "":
             st.warning("Please enter symptoms.")
@@ -76,4 +81,6 @@ def run():
 
         speak(translated, language)
 
-        st.caption("⚠ This tool provides general health information and is not a medical diagnosis.")
+        st.caption(
+            "⚠ This tool provides general health information and is not a medical diagnosis."
+        )

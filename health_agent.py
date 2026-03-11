@@ -1,21 +1,43 @@
+from groq import Groq
+import streamlit as st
+
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+
+
 def health_agent(user_query):
 
-    query = user_query.lower()
+    prompt = f"""
+You are an AI routing agent.
 
-    if "symptom" in query or "fever" in query or "pain" in query:
-        return "symptom"
+Your job is to decide which healthcare tool should handle the user query.
 
-    elif "interaction" in query or "drug" in query:
-        return "drug"
+Available tools:
 
-    elif "report" in query or "blood" in query:
-        return "report"
+symptom → for symptoms like fever, headache, pain
+drug → for drug interactions
+report → for medical report analysis
+disease → for disease risk prediction
+medicine → for medicine alternatives
+chat → general health questions
 
-    elif "risk" in query or "disease":
-        return "disease"
+User Query:
+{user_query}
 
-    elif "alternative" in query:
-        return "medicine"
+Respond with ONLY one word:
 
-    else:
-        return "chat"
+symptom
+drug
+report
+disease
+medicine
+chat
+"""
+
+    response = client.chat.completions.create(
+        model="llama-3.1-8b-instant",
+        messages=[{"role": "user", "content": prompt}]
+    )
+
+    decision = response.choices[0].message.content.strip().lower()
+
+    return decision
