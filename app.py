@@ -74,11 +74,11 @@ if page == "🤖 Agentic Health Assistant":
 
         elif decision == "report":
             st.success("Agent selected: Medical Report Analyzer")
-            report_analyzer.run(user_query)
+            report_analyzer.run()
 
         elif decision == "disease":
             st.success("Agent selected: Disease Risk Predictor")
-            disease_predictor.run(user_query)
+            disease_predictor.run()
 
         elif decision == "medicine":
             st.success("Agent selected: Medicine Alternative Finder")
